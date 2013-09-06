@@ -26,6 +26,7 @@ Apply a DCFileDropController to any CPView:
 		dropDelegate:self 
 		uploadURL:[CPURL URLWithString:@"upload.php"] 
 		uploadManager:[DCFileUploadManager sharedManager]];
+	[fileDropUploadController setEnabled:YES];
 
 If you want to change visual state of the view, you can do that with this dropDelegate method:
 
