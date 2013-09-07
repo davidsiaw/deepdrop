@@ -18,7 +18,6 @@
 	[nameField setLineBreakMode:CPLineBreakByTruncatingTail];
 	[nameField setVerticalAlignment:CPCenterVerticalTextAlignment];
 	[nameField setFont:[CPFont systemFontOfSize:12.0]];
-	[nameField setTextColor:[CPColor whiteColor]];
 	[nameField setBackgroundColor:[CPColor clearColor]];
 	[self addSubview:nameField];
 
@@ -34,6 +33,16 @@
 	[self addSubview:progressIndicator];
 
 	return self;
+}
+
+- (void)setTextColor:(CPColor)color
+{
+	[nameField setTextColor:color];
+}
+
+- (CPColor)setTextColor
+{
+	return [nameField textColor];
 }
 
 - (void)setObjectValue:(Object)anObject {

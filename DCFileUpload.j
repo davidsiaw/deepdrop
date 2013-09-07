@@ -28,6 +28,9 @@ DCFileUploadDelegate protocol
     id              legacyForm;
     id              legacyFileElement;
     DOMElement      _DOMIFrameElement;
+    var _onloadHandler;
+
+    var CATCH_EXCEPTIONS;
 }
 
 - (id)initWithFile:(id)theFile
@@ -59,6 +62,7 @@ DCFileUploadDelegate protocol
         // upload asynchronously with progress in newer browsers
         indeterminate = NO;
         [self processXHR];
+        name = file.name;
     }
     else if (legacyForm && legacyFileElement)
     {

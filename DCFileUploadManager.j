@@ -17,14 +17,6 @@ SharedFileUploadManager = nil;
     BOOL    concurrent @accessors; // YES to make files upload at the same time.  NO (default) to upload one at a time.
 }
 
-+ (DCFileUploadManager)sharedManager
-{
-    if (!SharedFileUploadManager)
-        SharedFileUploadManager = [[DCFileUploadManager alloc] init];
-
-    return SharedFileUploadManager;
-}
-
 - (id)init
 {
     self = [super init];

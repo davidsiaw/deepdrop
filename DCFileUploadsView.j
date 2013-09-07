@@ -2,21 +2,17 @@
 @import "DCFileUploadManager.j"
 @import "DCFileUploadsRowView.j"
 
-@implementation DCFileUploadsPanel : CPPanel {
-	CPArray	list;
+@implementation DCFileUploadsView : CPView {
+	CPArray uploadList @accessors;
 	CPTableView tableView;
 }
 
 - (id)initWithFrame:(CGRect)theFrame {
-	self = [self initWithContentRect:theFrame styleMask:CPHUDBackgroundWindowMask | CPClosableWindowMask | CPResizableWindowMask];
-	if (self) {
-		list = [[DCFileUploadManager sharedManager] fileUploads];
 
-		[self setTitle:@"Uploads"];
-		[self setFloatingPanel:YES];
-		
-		var contentView = [self contentView];
-		var bounds = [contentView bounds];
+	self = [super initWithFrame:theFrame];
+
+	if (self) {
+		var bounds = [self bounds];
 		bounds.size.height -= 20.0;
 
 		// create the table view
@@ -44,22 +40,21 @@
 		[scrollView setDocumentView:tableView];
 		[scrollView setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
 		[scrollView setAutohidesScrollers:YES];
-		[contentView addSubview:scrollView];
+		[self addSubview:scrollView];
 
 		[[scrollView verticalScroller] setTheme:[CPTheme themeNamed:@"Aristo-HUD"]];
 		[[scrollView horizontalScroller] setTheme:[CPTheme themeNamed:@"Aristo-HUD"]];
 		[tableView setBackgroundColor:[CPColor clearColor]];
 		[scrollView setBackgroundColor:[CPColor clearColor]];
-		
+
 	}
 	return self;
 }
 
-- (void)fileUploadManagerDidChange:(DCFileUploadManager)theManager {
+- (void)reloadData
+{
 	[tableView reloadData];
-	[[CPRunLoop currentRunLoop] limitDateForMode:CPDefaultRunLoopMode];
 }
-
 
 // ******************** CPTableView Delegate *********************
 
@@ -68,11 +63,11 @@
 }
 
 - (id)tableView:(CPTableView)aTableView objectValueForTableColumn:(int)aColumn row:(int)aRow {
-	return [list objectAtIndex:aRow];
+	return [uploadList objectAtIndex:aRow];
 }
 
 - (int)numberOfRowsInTableView:(CPTableView)aTableView {
-	return [list count];
+	return [uploadList count];
 }
 
 
