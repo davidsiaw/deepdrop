@@ -94,6 +94,9 @@ And process it with this method:
 }
 ```
 
+## TODO
+
+* Implement for Firefox and other browsers
 
 ## Attribution
 
