@@ -1,8 +1,8 @@
 Deep Drop Upload
 ==========
 
-[Example](http://labs.astrobunny.net/cappdemos/deepdrop/)
-[Example Sources](https://github.com/davidsiaw/deepdrop-example)
+* [Click here to see a Demo](http://labs.astrobunny.net/cappdemos/deepdrop/)
+* [Demo Sources](https://github.com/davidsiaw/deepdrop-example)
 
 These classes allow you to turn any CPView in a [Cappuccino](http://github.com/cappuccino/cappuccino) app into a file upload drop zone.  It supports multiple files dropped at once.  It works in Safari and Chrome.  Firefox support is possible, but hasn't been added.
 
